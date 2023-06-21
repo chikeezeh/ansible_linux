@@ -7,9 +7,5 @@
   - name: "Installing apache package"
     yum:
       name: httpd
-  - name: "Configure firewall"
-    command: firewall-cmd --add-service=http --permanent
-    command: firewall-cmd --reload
-    command: systemctl start httpd
-    command: systemctl enable httpd
-
+      state: latest
+    when: ansible_distribution == "AlmaLinux"
