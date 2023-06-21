@@ -1,3 +1,5 @@
-192.168.18.150
-192.168.18.151
-192.168.18.152
+[servers]
+server1 ansible_host=192.168.18.150 ansible_user=root
+server2 ansible_host=192.168.18.151 ansible_user=root
+server3 ansible_host=192.168.18.152 ansible_user=root
+server4 ansible_host=192.168.18.153 ansible_user=flatplanet
