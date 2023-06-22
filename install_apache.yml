@@ -4,41 +4,26 @@
   become: true
   tasks:
 
-  - name: "Update repository for AlmaLinux"
-    yum:
-      update_cache: yes
-    when: ansible_distribution == "AlmaLinux"
+  # - name: "Add EPEL repository"
+  #   command: yum install -y epel-release
+  #   when: ansible_distribution == "AlmaLinux"
 
-  - name: "Installing apache and php package for AlmaLinux"
+  - name: "Update repository and installing apache and php package for AlmaLinux"
     yum:
       name:
         - httpd
         - php
       state: latest
-    when: ansible_distribution == "AlmaLinux"
-
-  - name: "Update repository"
-    command: yum install -y epel-release
-    when: ansible_distribution == "AlmaLinux"
-  - name: "Installing neovim for AlmaLinux"
-    yum:
-      name:
-        - neovim
-        - python3-neovim
-      state: latest
-    when: ansible_distribution == "AlmaLinux"
-
-  - name: "Update repository for Ubuntu"
-    apt:
       update_cache: yes
-    when: ansible_distribution == "Ubuntu"
+    when: ansible_distribution == "AlmaLinux"
 
-  - name: "Installing apache and php package for Ubuntu"
+  - name: "Update repository and installing apache and php package for Ubuntu"
     apt:
       name: 
         - apache2
         - libapache2-mod-php
       state: latest
+      update_cache: yes
     when: ansible_distribution == "Ubuntu"
 
 
