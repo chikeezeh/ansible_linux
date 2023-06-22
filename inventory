@@ -1,5 +1,5 @@
 [servers]
-server1 ansible_host=192.168.18.150 ansible_user=root
-server2 ansible_host=192.168.18.151 ansible_user=root
-server3 ansible_host=192.168.18.152 ansible_user=root
-server4 ansible_host=192.168.18.153 ansible_user=flatplanet
+server1 ansible_host=192.168.18.150 ansible_user=root apache_package=httpd php_package=php
+server2 ansible_host=192.168.18.151 ansible_user=root apache_package=httpd php_package=php
+server3 ansible_host=192.168.18.152 ansible_user=root apache_package=httpd php_package=php
+server4 ansible_host=192.168.18.153 ansible_user=flatplanet apache_package=apache2 php_package=libapache2-mod-php
