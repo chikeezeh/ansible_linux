@@ -1,20 +1,20 @@
 ---
 
-- hosts: all
-  become: true
-  tasks:
+# - hosts: all
+#   become: true
+#   tasks:
 
-  # - name: "Add EPEL repository"
-  #   command: yum install -y epel-release
-  #   when: ansible_distribution == "AlmaLinux"
+#   # - name: "Add EPEL repository"
+#   #   command: yum install -y epel-release
+#   #   when: ansible_distribution == "AlmaLinux"
 
-  - name: "Update repository and installing apache and php package on host"
-    package:
-      name:
-        - "{{ apache_package }}"
-        - "{{ php_package }}"
-      state: latest
-      update_cache: yes
+#   - name: "Update repository and installing apache and php package on host"
+#     package:
+#       name:
+#         - "{{ apache_package }}"
+#         - "{{ php_package }}"
+#       state: latest
+#       update_cache: yes
 
   # - name: "Update repository and installing apache and php package for Ubuntu"
   #   apt:
@@ -25,4 +25,26 @@
   #     update_cache: yes
   #   when: ansible_distribution == "Ubuntu"
 
+---
 
+- hosts: all
+  become: true
+  tasks:
+  - name: install apache and php for Ubuntu server
+    apt:
+      name:
+        - apache2
+        - libapache2-mod-php
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+  - name: install apache and php for AlmaLinux servers
+    dnf:
+      name:
+        - httpd
+        - php
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "AlmaLinux"
+  
